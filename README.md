@@ -22,4 +22,4 @@ django2.0搭建的一个论坛。（django2.0 forum）
 [django2.0在apache上的配置2](https://www.lovexu.xyz/2018/08/22/NO20/)
 
 ************
-更多优质内容，请关注微信公众号：**生物信息与python**。
+# 欢迎star，fork！
