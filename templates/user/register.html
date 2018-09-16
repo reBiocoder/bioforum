@@ -1,0 +1,47 @@
+{% extends  'nav_base.html' %}
+
+{% block  left_content %}
+
+<div class="panel panel-default">
+        <div class="panel-body">
+       {% if  message %}
+            <ul class="list-group">
+
+                        <li class="list-group-item info">{{ message }}</li>
+
+                </ul>
+            {% endif %}
+
+            <form method="post" action="{% url 'user:register' %}">
+                {% csrf_token %}
+
+                 <div class="form-group">
+                    <label for="usernameInput">账号:</label>
+                   {{ forms.username }}
+                 </div>
+                <div class="form-group">
+                    <label for="InputPassword1">密码:</label>
+                    {{ forms.password }}
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword2">重复输入密码:</label>
+                {{ forms.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">电子邮箱:</label>
+                    {{ forms.email }}
+                </div>
+                <!--div class="form-group">
+                    {{ forms.mobile.label_tag }}
+                    {{ forms.mobile }}
+                </div-->
+                <div class="form-group">
+                    <label>为防止你是机器人，请输入验证码</label>
+                    {{ forms.captcha }}
+                </div>
+                <button type="submit" class="btn btn-default">提交</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

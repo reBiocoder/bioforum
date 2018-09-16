@@ -1,0 +1,62 @@
+{% extends  'nav_base.html' %}
+{% load  static %}
+{% block  left_content %}
+
+    {% if  request.user.is_authenticated  %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form method="post" action="{% url  'topic:create_topic'  username=request.user.username %}">
+
+
+<form  method="post" >
+    {% csrf_token %}
+    <link href="{% static  'editor/demo.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'editor/editor1.css' %}" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="{% static  'editor/Markdown.Converter.js' %}"></script>
+<script type="text/javascript" src="{% static  'editor/Markdown.Converter1.js' %}"></script>
+<script type="text/javascript" src="{% static  'editor/Markdown.Sanitizer.js' %}"></script>
+<script type="text/javascript" src="{% static  'editor/Markdown.Editor.js' %}"></script>
+<script type="text/javascript" src="{% static  'editor/Markdown.Extra.js' %}"></script>
+<script type="text/javascript" src="{% static  'editor/pagedown_init.js' %}"></script>
+    <div id="div_id_node" class="form-group"> <label for="id_node" class="control-label  requiredField">
+        {% if  message %}
+        <p>{{ message }}</p>
+            {% endif %}
+                主题<span class="asteriskField">*</span> </label> <div class="controls ">
+                  {{ forms.node }}
+</div> </div> <div id="div_id_title" class="form-group"> <label for="id_title" class="control-label  requiredField">
+                标题<span class="asteriskField">*</span> </label> <div class="controls "> {{ forms.title }} </div> </div> <div id="div_id_content_raw" class="form-group"> <label for="id_content_raw" class="control-label  requiredField">
+                内容<span class="asteriskField">*</span> </label> <div class="controls "> <div class="wmd-wrapper" id="id_content_raw-wmd-wrapper"> <div class="wmd-panel"> <div id="id_content_raw_wmd_button_bar"></div> {{ forms.content_raw }} </div> <p class="wmd-preview-title"><small>markdown输出浏览:</small></p> <div id="id_content_raw_wmd_preview" class="wmd-panel wmd-preview"></div> </div> </div> </div> <div class="form-group"> <div class="controls "> <input type="submit"
+    name="submit"
+    value="Submit"
+
+        class="btn btn-primary"
+        id="submit-id-submit"
+
+
+    /> </div> </div> </form>
+
+            </form>
+        </div>
+    </div>
+{% else %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">参与评论</div>
+        <div class="panel-body">
+
+
+                    <div class="alert alert-warning" role="alert">
+
+
+
+                            请 <a href="{% url  'user:login' %}">登录</a> 或者 <a href="{% url 'user:register' %}">注册一个新用户</a> 去回复
+
+                    </div>
+
+
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

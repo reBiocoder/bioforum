@@ -1,0 +1,103 @@
+{% extends 'nav_base.html' %}
+{% block  content %}
+<div id="Wrapper">
+    <div id="Main">
+      <div id="Sidebar">
+      </div>
+
+      <div id="Rightbar">
+
+
+
+
+
+
+
+
+  <div class="box">
+    <div class="cell">
+      <strong>BioForum</strong>
+      <div class="sep5"></div>
+      <span class="fade">本论坛使用django搭建</span>
+    </div>
+    <div class="inner">
+      <div class="sep5"></div>
+      <div align="center">
+        <a href="{% url  'user:register' %}" class="super normal button">注册</a>
+        <div class="sep5"></div>
+        <div class="sep10"></div>
+        or <a href="{% url 'user:login' %}">登录</a>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+
+
+    {% block  login_content %}
+
+      <div id="Content">
+
+  <style>
+    #id_remember {
+      width: auto !important;
+    }
+  </style>
+  <div class="box">
+    <div class="cell">
+      <span class="bigger">
+        <a href="/">论坛首页</a>
+        <span class="chevron">&raquo;</span>
+        登录
+      </span>
+    </div>
+    <div class="inner">
+      <form action="/user/login/" accept-charset="utf-8" method="post" class="frm-form" id="afocus">
+        {% csrf_token %}
+          <div class="ct-box error-box">
+            <p class="errornote">{{ message }}</p>
+            <ul class="errorlist">{{ messsge }}</ul>
+          </div>
+
+
+        <div class="sep10"></div>
+
+        <table cellspacing="0" cellpadding="5" border="0">
+          <tbody>
+            <tr>
+              <td width="80" align="right"> 用户名 </td>
+              <td width="200" align="left"> {{ login.username }}</td>
+            </tr>
+            <tr>
+              <td width="80" align="right"> 密码 </td>
+              <td width="200" align="left"> {{ login.password }} </td>
+            </tr>
+            <tr>
+              <td width="80" align="right"> </td>
+              <td width="200" align="left">
+                <input id="id_remember" name="remember" type="checkbox" />
+                <span class="fade">记住我</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="80" align="right"> </td>
+              <td width="200" align="left">
+
+                <input type="submit" class="super normal button" value="Login">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+
+      </div>
+    {% endblock %}
+
+      <div class="c">
+      </div>
+    </div>
+  </div>
+{% endblock %}

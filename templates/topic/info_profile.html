@@ -1,0 +1,78 @@
+{% extends  'nav_base.html' %}
+{% load  all_node_theme %}
+{% load  theme_to_reply %}
+{% load  recent_reply %}
+{% block  left_content %}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img class="user-avatar" src="http://www.gravatar.com/avatar/e7299b7998581a411f3189c4139ce032?s=48&amp;d=" alt=""/>
+            </div>
+            <div class="col-xs-9 col-sm-10">
+                <p>{{ userinfo.username }}</p>
+                <p>唯一标识符：{{ userinfo.id }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-body panel-subtitle">
+            <span class="label label-success">
+
+                <font size="3" color="#1e90ff">    由【{{ userinfo.username }}】创造的主题</font>
+
+            </span>
+        </div>
+        <!-- List group -->
+        <ul class="list-group topic-list">
+
+            {% for  each_user_theme in  user_theme %}
+
+                <li class="list-group-item topic-entry">
+                    <div class="entry media">
+                        <div class="media-body media-middle">
+                            <a href="{% url  'topic:topic_content'  content_id=each_user_theme.id %}" class="entry-link">
+                               {{  each_user_theme.title  }}
+                            </a>
+                            <p class="entry-meta">
+                                <a href="/theme/{% all_node_theme each_user_theme.node %}/">
+                                        <span class="label label-default meta-node">
+                                        {{ each_user_theme.node }}
+                                        </span>
+                                </a>
+                                    <span class="meta meta-pub_date">
+
+                                        <strong>发表时间:{{ each_user_theme.pub_time }}</strong>
+                                    </span>
+                                    <span class="meta meta-last_replied hidden-xs">
+                                        <strong>最新回复人: {% recent_reply  each_user_theme.title %}</strong>
+                                    </span>
+                            </p>
+                        </div>
+                        <div class="media-right media-middle">
+                            <span class="badge">{% theme_to_reply  each_user_theme.title %}</span>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+            <li class="list-group-item">
+                <!--a href="/u/279/topics/" class="text-success">More topics from this user</a-->
+            </li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <!-- List group -->
+        <ul class="list-group topic-list">
+
+        </ul>
+    </div>
+
+
+
+
+
+{% endblock %}

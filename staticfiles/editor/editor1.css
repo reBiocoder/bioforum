@@ -1,0 +1,24 @@
+.wmd-panel
+{
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	min-width: 0;
+}
+.wmd-input {
+    height: 300px;
+    width: 100%;
+    background-color: white;
+    border: solid 1px #cccccc;
+}
+.wmd-preview {
+    background-color: white;
+    border: solid 1px #cccccc;
+    padding: 10px;
+}
+.wmd-preview-title {
+    margin-top: 10px;
+}
+#id_content_raw_wmd_button_bar {
+    overflow: auto;
+}

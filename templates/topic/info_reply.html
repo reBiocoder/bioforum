@@ -1,0 +1,68 @@
+{% extends  'nav_base.html' %}
+{% load  all_node_theme %}
+{% load  theme_to_reply %}
+{% load  recent_reply %}
+{% block  left_content %}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img class="user-avatar" src="http://www.gravatar.com/avatar/e7299b7998581a411f3189c4139ce032?s=48&amp;d=" alt=""/>
+            </div>
+            <div class="col-xs-9 col-sm-10">
+                <p>{{ userinfo.username }}</p>
+                <p>唯一标识符：{{ userinfo.id }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="panel panel-default">
+        <div class="panel-body panel-subtitle">
+            <span class="label label-success">
+
+                <font  size="3" color="#1e90ff">【{{ userinfo.username }}】发出的所有评论</font>
+
+            </span>
+        </div>
+        <!-- List group -->
+        <ul class="list-group topic-list">
+            {% for  each_user_reply in  all_user_reply %}
+
+                <li class="list-group-item reply-entry reply-entry-title">
+                    评论的帖子：
+                    <a href="{% url  'topic:topic_content' content_id=each_user_reply.topic.id %}">{{ each_user_reply.topic.title }}</a>
+                    <span class="pull-right">{{ each_user_reply.add_time }}</span>
+                </li>
+                <li class="list-group-item reply-entry reply-entry-content">
+
+                        {{ each_user_reply.content|safe }}
+                    </p>
+</p>
+                </li>
+
+            {% endfor %}
+
+
+
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="panel panel-default">
+        <!-- List group -->
+        <ul class="list-group topic-list">
+
+        </ul>
+    </div>
+
+
+
+
+
+{% endblock %}

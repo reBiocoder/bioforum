@@ -1,0 +1,70 @@
+{% extends  'user/login.html' %}
+{% block  login_content %}
+
+
+
+      <div id="Content">
+
+  <div class="box">
+    <div class="cell">
+      <span class="bigger">
+        <a href="/">论坛首页</a>
+        <span class="chevron">&raquo;</span>
+        用户注册
+      </span>
+    </div>
+    <div class="inner">
+      <form action="{% url  'user:register' %}" accept-charset="utf-8" method="post" class="frm-form" id="afocus">
+        {% csrf_token %}
+
+          <div class="ct-box error-box">
+            <p class="errornote">{{ message }}</p>
+            <ul class="errorlist">{{ messsge }}</ul>
+          </div>
+
+
+        <div class="sep10"></div>
+        <table cellspacing="0" cellpadding="5" border="0">
+          <tbody>
+            <tr>
+              <td width="120" align="right"> 账号 </td>
+              <td width="200" align="left"> {{ forms.username }} </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> 密码 </td>
+              <td width="200" align="left"> {{ forms.password }} </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> 密码（再次） </td>
+              <td width="200" align="left"> {{ forms.password1 }} </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> 您的邮箱 </td>
+              <td width="200" align="left"> {{ forms.email }} </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> 您的电话 </td>
+              <td width="200" align="left"> {{ forms.mobile }} </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> 验证码 </td>
+              <td width="200" align="left">
+
+             {{ forms.captcha }}
+
+              </td>
+            </tr>
+            <tr>
+              <td width="120" align="right"> </td>
+              <td width="200" align="left"> <input type="submit" class="super normal button" value="Sign Up"> </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+
+      </div>
+
+
+{% endblock %}

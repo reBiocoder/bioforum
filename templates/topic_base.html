@@ -1,0 +1,107 @@
+{% extends  'nav_base.html' %}
+
+{% block  left_content %}
+    <div class="panel panel-default">
+        <div class="panel-body panel-subtitle">
+            <span class="label label-success">{{ theme.last.node }}</span>
+
+              <span class="pull-right ordering">
+                排序:
+                <span>
+                  <a href="{% url  'topic:theme1' theme_id=theme_id %}">发帖时间</a>
+                </span>
+                <span>
+                  <a href="#">最新回复</a>
+                </span>
+              </span>
+
+        </div>
+        <!-- List group -->
+        <ul class="list-group topic-list">
+
+            {% for  each_theme  in  theme %}
+                <li class="list-group-item topic-entry">
+                    <div class="entry media">
+                        <div class="media-left media-middle">
+                            <a class="list-avatar-link" href="/u/1/"><img class="user-avatar" src="http://www.gravatar.com/avatar/4e5750bb485db473fc5fcaac227b78e3?s=48&amp;d="></a>
+                        </div>
+                        <div class="media-body media-middle">
+                            <a href="{% url 'topic:topic_content'  content_id=each_theme.id %}" class="entry-link">
+                                {{ each_theme.title }}
+                            </a>
+                            <p class="entry-meta">
+
+                                <span class="meta">
+                                    <a href="{% url 'topic:theme1'  theme_id=theme_id %}">
+                                        <span class="label label-default meta-node">
+                                        {{ each_theme.node }}l
+                                        </span>
+                                    </a>
+                                </span>
+                                    <span class="meta meta-username">
+                                        <a href="/u/1/">
+                                            {{ each_theme.user }}
+                                        </a>
+                                    </span>
+                                    <span class="meta meta-pub_date">
+                                        {{ each_theme.pub_time }}
+                                    </span>
+                                    <span class="meta meta-last_replied hidden-xs">
+
+                                    </span>
+                            </p>
+                        </div>
+                        <div class="media-right media-middle">
+                            <a href="{% url 'topic:topic_content'  content_id=each_theme.id %}" class="entry-link">
+
+                            <span class="badge">点击查询所有回复</span>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+
+
+
+
+        </ul>
+        <div class="panel-footer">
+
+
+    <nav>
+        <ul class="pagination">
+
+
+
+
+                        <li><a href="#">1</a></li>
+
+
+
+
+
+                        <li><a href="/n/1/page/2/">2</a></li>
+
+
+
+
+
+                        <li><a href="/n/1/page/3/">3</a></li>
+
+
+
+
+                <li>
+                    <a href="/n/1/page/2/" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+        </ul>
+    </nav>
+
+        </div>
+    </div>
+
+
+{% endblock %}

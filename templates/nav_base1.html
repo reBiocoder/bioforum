@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_Hans" xml:lang="zh_Hans" />
+
+  <head>
+    <title>
+      BioForum
+      -
+      A Forum powered by Django
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="https://static.haoluobo.com/lbforum/lbforum/styles/v2ex/default.css"/>
+  </head>
+
+<body>
+
+<div id="Top">
+  <div id="TopMain">
+    <p id="title"><a href="/">BioForum</a></p>
+    <div id="Navigation">
+      <ul>
+          <li>
+	<a href="/">论坛首页</a>
+</li>
+<li>
+	<a href="#">博客</a>
+</li>
+          <li id="navregister"><a href="{% url 'user:register' %}">注册</a></li>
+          <li id="navlogin"><a href="{% url 'user:login' %}">登录</a></li>
+      </ul>
+    </div>
+<div id="Search">
+      <form action="/recent/">
+        <input type="text" class="search" maxlength="40" name="q" value="" id="q">
+        <input type="submit" class="super normal button" value="Search" style="-moz-border-radius: 0px 5px 5px 0px; border: none;">
+      </form>
+    </div>
+  </div>
+</div>
+
+{% block   content %}
+{% endblock %}
+
+      <div class="c">
+      </div>
+    </div>
+  </div>
+
+<div id="Bottom">
+  <div id="BottomMain">
+    <span class="fade">Copyright &copy; 2017 ~ 2018 <a href="https://www.lovexu.xyz">我爱小徐子</a></span>
+    <div class="fr" style="float:right;color: #999999;">
+      Powered by <strong><a href="https://www.djangoproject.com/">django</a></strong>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

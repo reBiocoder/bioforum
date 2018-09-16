@@ -1,0 +1,248 @@
+{% load  static %}
+{% load  site_info %}
+{% load  all_theme %}
+{% load  each_people_num %}
+{% load  each_reply_num %}
+{% load  all_node_theme %}
+<!DOCTYPE>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{% static  'bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static  'main.css' %}"/>
+    <title>Login-Niji Forum (Demo)</title>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-50029454-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">BioForum</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/"><strong>主页</strong></a></li>
+                <li class=""><a href="/theme/7/"><strong>论坛公告</strong></a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search" action="/search/">
+                <div class="form-group">
+                    <input type="text" id="keywordInput" name="keyword" class="form-control" placeholder="搜索">
+                </div>
+                <button type="submit" id="navSearchBtn" class="btn btn-default">搜索</button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-8"> <!-- LEFT -->
+
+{% block  left_content %}
+            {% endblock %}
+
+        </div><!-- END LEFT -->
+
+
+
+
+        <div class="col-lg-4"> <!-- RIGHT -->
+{% if  request.user.is_authenticated %}
+
+     <div class="panel panel-default">
+
+    <div class="panel-body user-panel">
+        <div class="panel-user-info">
+            <div class="avatar-name">
+                <a href="#">
+                    <img class="panel-avatar user-avatar" src="{% static  'image/3.jpg' %}" alt=""/>
+                </a>
+                <span class="panel-username"><a href="#">{{ request.user.username }}</a></span>
+            </div>
+            <div class="row panel-user-meta">
+                <div class="col-xs-4 panel-user-meta-item">
+                    <a href="{% url 'user:infoprofile'  username1=request.user.username %}">
+                        <div class="text-center">
+                            <p class="panel-user-meta-item-value">
+                                {% each_people_num  request.user.username %}
+                            </p>
+                            <p class="panel-user-meta-item-title">主题</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-4 panel-user-meta-item">
+                    <a href="{% url  'user:inforeply'  username1=request.user.username %}">
+                        <div class="text-center">
+                            <p class="panel-user-meta-item-value">{% each_reply_num  request.user.username %}</p>
+                            <p class="panel-user-meta-item-title">回复</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-4 panel-user-meta-item">
+                    <a href="#">
+                        <div class="text-center">
+                            <p class="panel-user-meta-item-value"><strong>{{ request.user.id }}</strong></p>
+                            <p class="panel-user-meta-item-title"><strong>账号唯一标识符</strong></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{% url  'topic:create_topic' username=request.user.username %}">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                创建一篇文章
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a class="text-success" href="/notifications/">
+
+                <span class="text-muted"><strong>【唯一标识符是您的幸运数字，用来参加活动使用】</strong></span>
+
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'user:logout' %}">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                注销
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+            {% else %}
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>BioForum</strong></div>
+    <div class="panel-body">
+        <strong>欢迎来到湖北大学生物信息学论坛！</strong>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{% url  'user:login' %}" class="btn btn-block btn-info">登录</a>
+            </div>
+            <div class="col-md-6">
+                <a href="{% url  'user:register' %}" class="btn btn-block btn-default">注册</a>
+            </div>
+        </div>
+        <hr/>
+
+
+
+    </div>
+</div>
+
+
+
+
+            {% endif %}
+{% block  theme_tag %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">内置主题</div>
+    <div class="panel-body">
+
+            <a href="/theme/1/">
+                <span class="label label-default meta-node">生物知识</span>
+            </a>
+
+
+
+            <a href="/theme/2/">
+                <span class="label label-default meta-node">生物信息</span>
+            </a>
+        <a href="/theme/3/">
+                <span class="label label-default meta-node">生活交流</span>
+            </a>
+        <a href="/theme/4/">
+                <span class="label label-default meta-node">生信编程</span>
+            </a>
+        <a href="/theme/5/">
+                <span class="label label-default meta-node">计算机学习</span>
+            </a>
+        <a href="/theme/6/">
+                <span class="label label-default meta-node">django学习</span>
+            </a>
+
+    </div>
+</div>
+
+
+    <div class="panel panel-default">
+    <div class="panel-heading">论坛信息</div>
+	    <div class="panel-body">
+	    <p style="margin: 0; text-align: center; height: 28px;">
+            <a>
+                <strong>总注册人数：</strong>
+            </a>
+            <a>
+                <strong>{% site_info  HAHA %}</strong>
+            </a>
+        </p>
+            <p  style="margin: 0; text-align: center; height: 28px;">
+                <a>
+                    <strong>论坛总帖量：</strong>
+            </a>
+            <a>
+                <strong> {% all_theme  HAHA %}  </strong>
+            </a>
+            </p>
+	    </div>
+	    </div>
+
+
+
+
+        {% endblock %}
+
+        </div><!-- END RIGHT -->
+    </div>
+</div>
+
+<script src="{% static  'jquery-2.2.4.min.js' %}"></script>
+<script src="{% static  'bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('#navSearchBtn').click(function(e){
+            e.preventDefault();
+            var keyword = $('#keywordInput').val();
+            if(keyword){
+                window.location = "/search/" + keyword +"/"; // FIXME: Use url tag!
+            }
+        });
+    });
+</script>
+
+<!--Niji Forum (Demo)-->
+</body>
+</html>
