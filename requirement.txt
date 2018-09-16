@@ -11,3 +11,5 @@ pycparser==2.18
 PyMySQL==0.9.2
 pytz==2018.5
 six==1.11.0
+markdown
+
