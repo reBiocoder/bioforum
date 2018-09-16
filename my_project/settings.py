@@ -25,9 +25,7 @@ SECRET_KEY = 'ze42&q3%&fhtm2k38v$nu0!3wq(7s@=b8$0j5$=p3%o2pxfji1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',
-                 'www.biocoder.cn',
-                 '119.23.246.30']
+ALLOWED_HOSTS = [*]
 
 
 
@@ -90,10 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME':'my_project',
-        'HOST':'127.0.0.1',
-        'USER':'root',
-        'PASSWORD':'ZPaixzh1314',
+        'NAME':'你的数据库名称',
+        'HOST':'主机号',
+        'USER':'你的数据库使用者',
+        'PASSWORD':'数据库的密码',
         'PORT':'3306',
     }
 }
