@@ -27,7 +27,7 @@ django2.0搭建的一个论坛。（django2.0 forum）
 [django2.0在服务器上的配置1](https://zhuanlan.zhihu.com/p/43016468)，
 
 [django2.0在apache上的配置2](https://www.lovexu.xyz/2018/08/22/NO20/)
-
+```
 ************
 # 欢迎star，fork！
 
@@ -38,3 +38,4 @@ django2.0搭建的一个论坛。（django2.0 forum）
 
 
 **代码写的很烂，注释也不是很好，大家多多包涵**
+```
