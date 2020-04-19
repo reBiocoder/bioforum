@@ -1,8 +1,12 @@
-# bioforum
+**2020-04-19更新**
+
+HUBU生信社区source code已全部开源，请查看[HUBU_Bioforum](https://github.com/reBiocoder/HUBU_Bioforum),本仓库的代码已经不在维护，可能存在安全问题。
+
+**********************
 django2.0搭建的一个论坛。（django2.0 forum）
 *******
 
-**在学习django2.0的过程中，最大的一个问题就是学了之后没有任何能够实践的项目，能让自己来练练手，github上的大多数项目都是基于django1.1-django1.9之间的，这是学习django2.0的过程中，一个最痛苦的一件事。**
+在学习django2.0的过程中，最大的一个问题就是学了之后没有任何能够实践的项目，能让自己来练练手，github上的大多数项目都是基于django1.1-django1.9之间的，这是学习django2.0的过程中，一个最痛苦的一件事。
 
 **本论坛基于django2.0，使用类视图的继承模式，基于django2.0内部的登录模块和一些内置的优秀功能，开发的一个论坛demo。**
 
