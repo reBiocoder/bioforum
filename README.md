@@ -1,6 +1,6 @@
 **2020-04-19更新**
 
-HUBU生信社区source code已全部开源，请查看[HUBU_Bioforum](https://github.com/reBiocoder/HUBU_Bioforum),本仓库的代码已经不在维护，可能存在安全问题。
+HUBU生信社区source code已全部开源，请查看[HUBU_Bioforum](https://github.com/reBiocoder/my_hubu),本仓库的代码已经不在维护，可能存在安全问题。
 
 **********************
 django2.0搭建的一个论坛。（django2.0 forum）
